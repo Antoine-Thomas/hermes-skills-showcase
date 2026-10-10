@@ -1,62 +1,76 @@
 # Hermes Skills Showcase
 
-[Security-reviewed · Available on Agensi.io]
+**Security-reviewed · Available on Agensi.io**
 
-## Summary
+A curated pack of [Hermes Agent](https://hermes-agent.nousresearch.com/) skills for **AI video
+automation**, **free-model routing** and **Windows system optimisation**. The pack turns a local
+Windows workstation into a reproducible AI-video pipeline: voice cloning, face animation, final
+assembly, and cost-aware LLM routing — each step a documented, self-contained skill.
 
-A curated collection of Hermes Agent skills for video automation, system optimization, and WordPress automation. This showcase presents selected capabilities designed to demonstrate the power and flexibility of the Hermes Agent platform.
+This repository is a **showcase only** — it demonstrates the workflow, commands and outputs.
+The full, working source (Python + PowerShell + FFmpeg pipelines) ships with the commercial version.
 
-## What's included in full version
+---
 
-- Video automation skills (LivePortrait, SadTalker, FFmpeg assembly)
-- System optimization and Windows task management
-- WordPress installation, backup, and deployment skills
-- AI integration skills (OmniRoute auto-update, NVIDIA NIM vision, XTTS voice cloning)
-- OmniRoute automatic updates with free AI model selection
-- Telegram notification integration
+## What's included in the full version
+
+- **ai-video-pipeline** — end-to-end AI video inference & assembly, with the 8 GB VRAM rules
+  (RTX 3070 Ti) and the 4K H.265 delivery spec
+- **liveportrait-pipeline** — realistic face animation (LivePortrait), GPU tuning, background/logo composite
+- **talking-head-video** — full SadTalker + LivePortrait + assembly pipeline
+- **video-youtube-assembly** — final assembly: animated background + logo + audio + title
+- **tts-voice-cloning** — French voice cloning with XTTS-v2
+- **omniroute-auto-update** — auto-discovery of new free AI models with Telegram notification
+- **nvidia-nim-vision** — vision via NVIDIA NIM (local proxy + API)
+- **windows-optimization** — temp cleanup, scheduled-task management, Windows tuning
+- **security-monitoring** — detect monitors that spam or miss alerts
 
 ## Live preview
 
-### Example 1: OmniRoute Auto-Update
+**Voice + talking head**
+
+```bash
+$ hermes run talking-head-video --photo portrait.jpg --audio voice.wav
+✓ XTTS-v2 voice rendered (fr, temp 0.75)
+✓ SadTalker 512px driving video
+✓ LivePortrait refinement (--source-max-dim 512)
+✓ Face animation rendered at 11.1x realtime
+✓ Output: talking_head.mp4
 ```
+
+**Final assembly**
+
+```bash
+$ hermes run video-youtube-assembly --music track.mp3 --logo logo.png --title "Episode 3"
+✓ Background looped to audio length
+✓ Logo + title overlay applied
+✓ H.265 CRF 18 mux  →  final.mp4 (3840×2160, ~45 Mbps)
+```
+
+**Free-model routing**
+
+```bash
 $ hermes run omniroute-auto-update
-✓ Checking for new free AI models...
-✓ Found 3 new accessible models
-✓ Updated configuration with Gemini 2.0 Flash
-✓ Notification sent to Telegram
+✓ Checked provider catalogue
+✓ 3 new free models added to the `eco` combo
+✓ Telegram notification sent
 ```
 
-### Example 2: LivePortrait Face Animation
-```
-$ hermes run liveportrait-pipeline --source phototetepourHErmesANIMA.jpg --audio ZOOM0004.WAV
-✓ Processing started
-✓ Face animation rendered (11.1x realtime)
-✓ Video assembled with background music
-✓ Output: output_video.mp4 (31.2 GiB RAM peak)
-```
-
-### Example 3: WordPress Site Creation
-```
-$ hermes run local-flywheel-setup --site-name "demo-site" --php-version "8.2"
-✓ Local by Flywheel environment detected
-✓ WordPress 6.6 installed
-✓ Admin user created
-✓ Site accessible at http://localhost:8080
-```
+See [`examples/`](examples/) for the full before/after write-ups.
 
 ## Requirements
 
-- Hermes Agent v0.21.5 or later
-- Python 3.11+ (for skill execution)
-- GPU recommended for video processing skills
-- API keys for OmniRoute, NVIDIA, or OpenAI (optional for basic skills)
-- Local by Flywheel for WordPress skills
+- Hermes Agent v0.21+ (https://github.com/NousResearch/hermes-agent)
+- Python 3.11+
+- FFmpeg on `PATH` (video skills)
+- GPU recommended (RTX 3070 Ti / 8 GB VRAM profile included for video/IA tasks)
+- Optional API keys: OmniRoute, NVIDIA NIM, OpenAI (see each skill's `.env.example`)
 
-## Buy full version on Agensi
+## Buy the full version on Agensi
 
-[Purchase commercial license on Agensi.io](https://www.agensi.io/@thomas-leroyer)
+**https://www.agensi.io/@thomas-leroyer**
 
-## About author
+## About the author
 
 Thomas Leroyer — searching.murphy@gmail.com
 
@@ -64,9 +78,13 @@ Thomas Leroyer — searching.murphy@gmail.com
 
 Copyright (c) 2026 Thomas Leroyer. All rights reserved.
 
-This repository is showcase only. Code, scripts, and skill files presented
-Here are proprietary and may not be copied, modified, distributed, sublicensed,
-Or used commercially without explicit written permission from author.
+This repository is a showcase only. The code, scripts, and skill files presented here are
+proprietary and may not be copied, modified, distributed, sublicensed, or used commercially
+without explicit written permission from the author. See [`LICENSE`](LICENSE).
 
-To purchase commercial license, visit: https://www.agensi.io/@thomas-leroyer
-Contact: searching.murphy@gmail.com
+To purchase a commercial license: https://www.agensi.io/@thomas-leroyer
+
+---
+
+**Keywords**: Hermes Agent skills, video automation, FFmpeg, talking-head video, voice cloning,
+system optimization, Windows automation, AI agent workflow.
